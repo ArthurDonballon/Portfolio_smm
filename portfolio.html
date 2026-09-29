@@ -1,0 +1,236 @@
+<title>Артур SMM-портфолио</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: media-kit — крупная цифра аудитории, затем проекты как «карточки площадок» с метриками, прошлые проекты компактно, услуги и контакт */
+:root{
+  --paper:#F2F4F6; --surface:#FFFFFF; --ink:#131820; --muted:#5B6573; --line:#D9DEE5;
+  --amber:#D9811A; --amber-soft:#FBEBD5; --ph:#FFF4C2; --ph-ink:#6B5300;
+  --f-display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0F1318; --surface:#171C23; --ink:#EDEFF2; --muted:#9AA4B1; --line:#29303A;
+  --amber:#F0A040; --amber-soft:#3A2A14; --ph:#3D3410; --ph-ink:#F5DD7A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0F1318; --surface:#171C23; --ink:#EDEFF2; --muted:#9AA4B1; --line:#29303A;
+  --amber:#F0A040; --amber-soft:#3A2A14; --ph:#3D3410; --ph-ink:#F5DD7A; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:40px 64px;display:grid;gap:72px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.1}
+h2{font-size:clamp(1.5rem,3.2vw,2.1rem);font-weight:700}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0;max-width:62ch}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+.label{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ph{background:var(--ph);color:var(--ph-ink);border-radius:4px;padding:0 .3em;font-style:normal;white-space:normal}
+.num{font-variant-numeric:tabular-nums}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:end;padding-top:24px}
+.hero h1{font-size:clamp(2rem,5.4vw,3.6rem);font-weight:800;letter-spacing:-.01em}
+.hero h1 span{color:var(--amber)}
+.hero-intro{display:grid;gap:20px}
+.hero-intro p{color:var(--muted);font-size:1.08rem}
+.reach{border-left:3px solid var(--amber);padding-left:24px;display:grid;gap:4px}
+.reach .big{font-family:var(--f-display);font-weight:800;font-size:clamp(3.4rem,9vw,6rem);line-height:1;letter-spacing:-.03em}
+.reach .cap{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--f-mono);font-size:.8rem;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--surface)}
+
+/* projects */
+.section-head{display:grid;gap:8px;margin-bottom:28px}
+.projects{display:grid;gap:24px}
+.project{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;display:grid;grid-template-columns:1fr 1.15fr;gap:32px}
+.project > *{min-width:0}
+.p-meta{display:grid;gap:14px;align-content:start}
+.p-meta .platform{display:flex;align-items:center;gap:10px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--amber)}
+.p-meta a.handle{font-family:var(--f-mono);font-size:.95rem;color:var(--amber);text-decoration:none;border-bottom:1px solid currentColor;justify-self:start}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.stat{background:var(--surface);padding:14px 16px;display:grid;gap:2px}
+.stats-2{grid-template-columns:1fr 1fr}
+.stat b{font-family:var(--f-display);font-size:1.35rem;font-weight:700}
+.stat span{font-size:.8rem;color:var(--muted)}
+.p-body{display:grid;gap:18px;align-content:start}
+.p-body ul{margin:0;padding-left:1.1em;display:grid;gap:6px}
+.p-body li::marker{color:var(--amber)}
+
+/* past */
+.past{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.past-item{border-top:2px solid var(--ink);padding-top:16px;display:grid;gap:10px;align-content:start}
+.past-item .row{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.9rem;color:var(--muted)}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.svc{display:grid;gap:8px;align-content:start}
+.svc h3{font-size:1rem}
+.svc p{color:var(--muted);font-size:.95rem}
+
+/* integration process — a real sequence, so numbered */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+.steps li{counter-increment:s;background:var(--amber-soft);border-radius:12px;padding:18px;display:grid;gap:6px;align-content:start}
+.steps li::before{content:counter(s);font-family:var(--f-mono);font-weight:600;color:var(--amber)}
+.steps b{font-weight:700}
+.steps span{font-size:.9rem;color:var(--muted)}
+
+/* contact */
+.contact{background:var(--ink);color:var(--paper);border-radius:18px;padding:40px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.contact h2{color:var(--paper)}
+.contact p{color:var(--paper);opacity:.75}
+.contact-list{display:grid;gap:12px}
+.contact-list a,.contact-list div{font-family:var(--f-mono);color:var(--paper);text-decoration:none;display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid color-mix(in srgb,var(--paper) 25%,transparent);padding-bottom:10px;flex-wrap:wrap}
+.contact-list small{opacity:.6;font-family:var(--f-body)}
+.contact .ph{background:var(--amber);color:var(--ink)}
+
+.note{font-size:.85rem;color:var(--muted);border:1px dashed var(--line);border-radius:10px;padding:12px 16px}
+
+@media (max-width:820px){
+  .hero,.project,.contact{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+}
+@media (max-width:520px){
+  .past,.services,.steps{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .project,.contact{padding:22px}
+  .wrap{gap:56px}
+}
+</style>
+
+<main class="wrap">
+
+  <header class="hero">
+    <div class="hero-intro">
+      <span class="label">SMM-специалист · Артур</span>
+      <h1>Артур —<br>веду <span>Instagram</span> и&nbsp;<span>Telegram</span> с&nbsp;живой аудиторией</h1>
+      <p>Развиваю медиа: контент, рост подписчиков и рекламные интеграции для личных брендов, кафе и локального бизнеса.</p>
+      <div class="chips">
+        <span class="chip">Instagram</span><span class="chip">Telegram</span><span class="chip">Интеграции</span><span class="chip">Боты</span>
+      </div>
+    </div>
+    <div class="reach">
+      <span class="big num">451K</span>
+      <span class="cap">подписчиков в Instagram @riga_food</span>
+      <span class="cap">Reels набирают от 100K до 1M просмотров, рекорд — <b class="num">11M</b></span>
+      <span class="label" style="margin-top:12px">+ Telegram «Пилигрим» · <span class="num">1 890</span> подписчиков</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-head">
+      <span class="label">Текущие проекты</span>
+      <h2>Что я веду сейчас</h2>
+    </div>
+    <div class="projects">
+
+      <article class="project">
+        <div class="p-meta">
+          <div class="platform"><span class="dot"></span><span class="label">Instagram · food-медиа</span></div>
+          <h3>riga_food</h3>
+          <a class="handle" href="https://instagram.com/riga_food" target="_blank" rel="noopener">@riga_food</a>
+          <div class="stats stats-2">
+            <div class="stat"><b class="num">451K</b><span>подписчиков</span></div>
+            <div class="stat"><b class="num">100K–1M</b><span>просмотров у Reels</span></div>
+            <div class="stat"><b class="num">11M</b><span>просмотров у топ-Reels</span></div>
+            <div class="stat"><b class="num">600K</b><span>лайков у топ-Reels</span></div>
+          </div>
+        </div>
+        <div class="p-body">
+          <p>Гастрономический аккаунт разросшийся в личный бренд: обзоры ресторанов, новые места, акции и события города.</p>
+          <ul>
+            <li>Контент-план, съёмка и монтаж Reels, сторис</li>
+            <li>Регулярные рекламные интеграции: 5–7 разных брендов в месяц</li>
+            <li>Переговоры с рекламодателями, прайс, отчёты по охватам</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="p-meta">
+          <div class="platform"><span class="dot"></span><span class="label">Telegram · программа лояльности</span></div>
+          <h3>Пилигрим</h3>
+          <a class="handle" href="https://t.me/PiligrimBonusBot" target="_blank" rel="noopener">@PiligrimBonusBot</a>
+          <div class="stats">
+            <div class="stat"><b class="num">1 890</b><span>подписчиков</span></div>
+            <div class="stat"><b class="num">200</b><span>просмотров поста</span></div>
+            <div class="stat"><b class="num">5000</b><span>пользователей бота</span></div>
+          </div>
+        </div>
+        <div class="p-body">
+          <p>«Пилигрим» — бренд талой ледниковой воды с вершин Северного Кавказа. Для него я веду канал и бонусного бота: пользователи регистрируются, выигрывают бонусы и тратят их на заправку автомобиля.</p>
+          <ul>
+            <li>Ведение канала: посты, рубрики, розыгрыши бонусов</li>
+            <li>Продвижение бота @PiligrimBonusBot и привлечение участников в программу лояльности</li>
+            <li>Связка «вода → бонусы → топливо»: механика, которая возвращает покупателей к бренду</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="label">Прошлые проекты</span>
+      <h2>Уже передал</h2>
+    </div>
+    <div class="past">
+      <div class="past-item">
+        <h3>YONKS — ирландский гастропаб</h3>
+        <div class="row"><span>Telegram</span><span>лето 2026</span><span class="num">712 подписчиков</span></div>
+        <p>Канал бара: пиво, кухня, живая музыка и трансляции матчей. Писал анонсы событий и матчей, вёл бонусные механики для гостей и делал так, чтобы люди возвращались в паб.</p>
+        <a class="handle" href="https://t.me/Yonks_bonus" target="_blank" rel="noopener" style="font-family:var(--f-mono);font-size:.9rem;color:var(--amber);justify-self:start">t.me/Yonks_bonus</a>
+      </div>
+      <div class="past-item">
+        <h3>Маркет Бонусов</h3>
+        <div class="row"><span>Telegram</span><span>лето 2026</span><span class="num">853 подписчика</span></div>
+        <p>Канал сервиса, где бонусы от производителей собираются в одном кошельке. Их можно тратить на покупки, дарить, обменивать и оплачивать ими топливо на 7000+ АЗС по России. Объяснял аудитории, как пользоваться бонусами, и привлекал новых участников программы.</p>
+        <a class="handle" href="https://t.me/SocMarketOEM" target="_blank" rel="noopener" style="font-family:var(--f-mono);font-size:.9rem;color:var(--amber);justify-self:start">t.me/SocMarketOEM</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="label">Чем могу помочь</span>
+      <h2>Услуги</h2>
+    </div>
+    <div class="services">
+      <div class="svc"><h3>Создание соцсетей с нуля</h3><p>Instagram, Telegram и другие площадки: название, оформление профиля, аватар и шапка, первые публикации и стартовый контент-план.</p></div>
+      <div class="svc"><h3>Ведение соцсетей под ключ</h3><p>Стратегия, контент-план, публикации, работа с комментариями.</p></div>
+      <div class="svc"><h3>Запуск Telegram-канала</h3><p>Упаковка, рубрики, первые подписчики, бот для бонусов или заявок.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="label">Как проходит интеграция</span>
+      <h2>От заявки до отчёта</h2>
+    </div>
+    <ol class="steps">
+      <li><b>Бриф</b><span>Задача, аудитория, сроки и формат</span></li>
+      <li><b>Сценарий</b><span>Согласуем идею и текст с вами</span></li>
+      <li><b>Съёмка и выход</b><span>Публикация в согласованную дату</span></li>
+      <li><b>Отчёт</b><span>Охваты, просмотры, реакции</span></li>
+    </ol>
+  </section>
+
+  <section class="contact">
+    <div style="display:grid;gap:14px">
+      <h2>Обсудим проект?</h2>
+      <p>Пришлите бриф или просто опишите задачу.</p>
+    </div>
+    <div class="contact-list">
+      <div><span><em class="ph">@Archiesbck</em></span><small>Telegram</small></div>
+      <div><span><em class="ph">@arthurdanilyan</em></span><small>Instagram</small></div>
+      <div><span><em class="ph">Art2003a27@mail.ru</em></span><small>Email</small></div>
+    </div>
+  </section>
+
+</main>
